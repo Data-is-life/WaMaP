@@ -1,18 +1,135 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
+
     <meta charset="utf-8">
-    <title>OpenLayers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Rise Over Run</title>
+    <meta name="description" content="Best app for finding the most optimal walking or biking route">
+    <meta name="author" content="Mohit Gangwani">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link href="css/all.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/resume.css" rel="stylesheet">
     <style>
-      html, body, #map-container {
-        margin: 0;
-        height: 100%;
-        width: 100%;
-        font-family: sans-serif;
-      }
+    #map {
+      height: 100%;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
     </style>
+
   </head>
-  <body>
-    <div id="map-container"></div>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">Rise Over Run</span>
+        <span class="d-none d-lg-block">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/logo.png" alt="">
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form id="routes">
+					<div id="target" class="place-inputs">
+						<div class="place-input">
+							<input id="from" type="text" placeholder="Type a place to start your journey">
+						</div>
+						<div id="from-to"></div>
+						<div class="place-input">
+							<input id="to" type="text" placeholder="Type your destination">
+						</div>
+
+						<div class="input-selector">
+							<div class="mode">
+								<select class="form-control" id="travel_mode">
+									<option>Bicycling</option>
+									<option>Walking</option>
+								</select>
+							</div>
+							<div class="col-xs-6">
+								<select class="form-control" id="measurement_mode">
+									<option value="miles">Miles</option>
+									<option value="km">KM</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="place-input">
+							<button class="button" type="submit" id="go">Let's Go!</button>
+						</div>
+					</div>
+				</form>
+      </div>
+    </nav>
+
+    <div class="main">
+      <section class="map" id="mapid">
+        <script>
+          // var map;
+          function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.397, lng: 150.644},
+              zoom: 8
+            });
+          }
+        </script>
+      <div class="Charts">
+        <div class="chart" id="elevation_chart"></div>
+        <div class="chart" id="slope_chart"></div>
+      </div>
+      <div class="travel_info">
+        <div class="row_travel">
+          Distance:
+          <span id="distance"></span>
+        </div>
+        <div class="row_travel">
+          <div id="travel_label">
+            Travel Time:
+            <span id="travel_time"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="map_mode" id="map-canvas">
+        </div>
+      </div>
+      <div class="Charts">
+        <div class="chart" id="elevation_chart"></div>
+        <div class="chart" id="slope_chart"></div>
+      </div>
+    </div>
+    </section>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa-Frf58l9jFUKSuA6CgPrG26ApI1-W0g&callback=initMap" async defer></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+  	<script type="text/javascript" src="js/route.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.min.js"></script>
+
   </body>
+
 </html>
